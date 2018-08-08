@@ -266,6 +266,9 @@ std::string WpanService::HandleStatusRequest()
         propertyValue                                = wpanController.Get(kWPANTUNDProperty_NetworkPANID);
         VerifyOrExit(propertyValue.length() > 0, ret = kWpanStatus_GetPropertyFailed);
         networkInfo[kWPANTUNDProperty_NetworkPANID] = propertyValue;
+        propertyValue                               = wpanController.Get(kWPANTUNDProperty_NetworkKey);
+        VerifyOrExit(propertyValue.length() > 0, ret = kWpanStatus_GetPropertyFailed);
+        networkInfo[kWPANTUNDProperty_NetworkKey]   = propertyValue;
         propertyValue                               = wpanController.Get(kWPANTUNDProperty_IPv6LinkLocalAddress);
         VerifyOrExit(propertyValue.length() > 0, ret = kWpanStatus_GetPropertyFailed);
         networkInfo[kWPANTUNDProperty_IPv6LinkLocalAddress] = propertyValue;
