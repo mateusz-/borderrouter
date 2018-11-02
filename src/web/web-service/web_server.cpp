@@ -157,7 +157,9 @@ void WebServer::DefaultHttpResponse(void)
             otbrLog(OTBR_LOG_DEBUG, "Here 1");
             auto webRootPath = boost::filesystem::canonical(WEB_FILE_PATH);
             auto path        = boost::filesystem::canonical(webRootPath / request->path);
+            otbrLog(OTBR_LOG_DEBUG, "Here 1.1");
             otbrLog(OTBR_LOG_DEBUG, path.string().c_str());
+            otbrLog(OTBR_LOG_DEBUG, "Here 1.2");
             // Check if path is within webRootPath
             if (std::distance(webRootPath.begin(), webRootPath.end()) > std::distance(path.begin(), path.end()) ||
                 !std::equal(webRootPath.begin(), webRootPath.end(), path.begin()))
