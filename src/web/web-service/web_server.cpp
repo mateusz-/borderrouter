@@ -156,7 +156,7 @@ void WebServer::DefaultHttpResponse(void)
         {
             otbrLog(OTBR_LOG_DEBUG, "Here 1");
             otbrLog(OTBR_LOG_DEBUG, WEB_FILE_PATH);
-            auto webRootPath = boost::filesystem::canonical(WEB_FILE_PATH);
+            auto webRootPath = boost::filesystem::canonical("/snap/btr-border-router/current/share/border-router/frontend");
             auto path        = boost::filesystem::canonical(webRootPath / request->path);
             otbrLog(OTBR_LOG_DEBUG, "Here 1.1");
             otbrLog(OTBR_LOG_DEBUG, path.string().c_str());
