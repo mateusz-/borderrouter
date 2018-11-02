@@ -155,6 +155,7 @@ void WebServer::DefaultHttpResponse(void)
         try
         {
             otbrLog(OTBR_LOG_DEBUG, "Here 1");
+            otbrLog(OTBR_LOG_DEBUG, WEB_FILE_PATH);
             auto webRootPath = boost::filesystem::canonical(WEB_FILE_PATH);
             auto path        = boost::filesystem::canonical(webRootPath / request->path);
             otbrLog(OTBR_LOG_DEBUG, "Here 1.1");
