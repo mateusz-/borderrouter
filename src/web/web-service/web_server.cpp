@@ -154,20 +154,25 @@ void WebServer::DefaultHttpResponse(void)
                                                               std::shared_ptr<HttpServer::Request>  request) {
         try
         {
+            otbrLog(OTBR_LOG_DEBUG, "Here 1");
             auto webRootPath = boost::filesystem::canonical(WEB_FILE_PATH);
             auto path        = boost::filesystem::canonical(webRootPath / request->path);
+            otbrLog(OTBR_LOG_DEBUG, path.string().c_str());
             // Check if path is within webRootPath
             if (std::distance(webRootPath.begin(), webRootPath.end()) > std::distance(path.begin(), path.end()) ||
                 !std::equal(webRootPath.begin(), webRootPath.end(), path.begin()))
             {
+                otbrLog(OTBR_LOG_DEBUG, "Here 2");
                 throw std::invalid_argument("path must be within root path");
             }
             if (boost::filesystem::is_directory(path))
             {
+                otbrLog(OTBR_LOG_DEBUG, "Here 3");
                 path /= "index.html";
             }
             if (!(boost::filesystem::exists(path) && boost::filesystem::is_regular_file(path)))
             {
+                otbrLog(OTBR_LOG_DEBUG, "Here 4");
                 throw std::invalid_argument("file does not exist");
             }
 
@@ -194,6 +199,7 @@ void WebServer::DefaultHttpResponse(void)
             }
             else
             {
+                otbrLog(OTBR_LOG_DEBUG, "Here 5");
                 throw std::invalid_argument("could not read file");
             }
 
